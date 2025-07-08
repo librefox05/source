@@ -3,7 +3,7 @@
 patches_dir="$1"
 src_path="$2"
 
-for patch in $patches_dir; do
+for patch in $patches_dir/*.patch; do
   echo "applying $patch"
   cd $src_path
   patch -p1 <$patch
