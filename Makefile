@@ -15,6 +15,7 @@ copyfiles:
 	rm -rf $(ff_patches_dir) || true
 	cp -r browser/branding/librefox $(ff_source_dir)/browser/branding
 	cp -r patches $(ff_source_dir)/
+	cp -r browser/base/content/aboutDialog.xhtml $(ff_source_dir)/browser/base/content/
 	cp mozconfig $(ff_source_dir)/
 
 patch:
