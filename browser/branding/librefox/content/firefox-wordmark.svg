@@ -5,20 +5,41 @@
    version="1.1"
    viewBox="0 0 148 56"
    id="svg2"
+   sodipodi:docname="firefox-wordmark.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="148"
+       height="56"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
   <defs
      id="defs2" />
   <text
      xml:space="preserve"
      style="font-size:36.8037px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-rule:evenodd;stroke-width:1.30406;stroke-linejoin:round"
-     x="-1.0979706"
-     y="40.991695"
+     x="3.4098606"
+     y="41.289227"
      id="text2"><tspan
        id="tspan2"
-       x="-1.0979706"
-       y="40.991695"
+       x="3.4098606"
+       y="41.289227"
        style="font-size:36.8037px;fill:#ffffff;stroke-width:1.30406"><tspan
-   style="font-weight:bold;font-size:36.8037px;fill:#ffffff;stroke-width:1.30406"
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:36.8037px;font-family:'Adwaita Sans';-inkscape-font-specification:'Adwaita Sans Bold';fill:#ffffff;stroke-width:1.30406"
    id="tspan3">Librefox</tspan> </tspan></text>
 </svg>

@@ -12,13 +12,13 @@
   <text
      xml:space="preserve"
      style="font-size:42.6005px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ff0000;fill-rule:evenodd;stroke-width:1.50946;stroke-linejoin:round"
-     x="-0.71934605"
-     y="39.037964"
+     x="2.1971555"
+     y="39.382359"
      id="text2"><tspan
        id="tspan2"
-       x="-0.71934605"
-       y="39.037964"
-       style="font-size:42.6005px;fill:#ffffff;stroke-width:1.50946"><tspan
-   style="font-weight:bold;font-size:42.6005px;fill:#ffffff;stroke-width:1.50946"
-   id="tspan3">Librefox</tspan> Browser</tspan></text>
+       x="2.1971555"
+       y="39.382359"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.6005px;font-family:'Adwaita Sans';-inkscape-font-specification:'Adwaita Sans Bold';fill:#ffffff;stroke-width:1.50946">Librefox <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Adwaita Sans';-inkscape-font-specification:'Adwaita Sans';fill:#ffffff"
+   id="tspan1">Browser</tspan></tspan></text>
 </svg>
