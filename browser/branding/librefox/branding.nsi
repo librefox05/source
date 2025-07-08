@@ -24,7 +24,7 @@
 !define URLStubDownloadAArch64 "https://github.com/librefox05/build/releases"
 !define URLManualDownload "https://github.com/librefox05/build/releases"
 !define URLSystemRequirements "https://github.com/librefox05/build"
-!define Channel "release"
+!define Channel "unofficial"
 
 # The installer's certificate name and issuer expected by the stub installer
 !define CertNameDownload   "Mozilla Corporation"
