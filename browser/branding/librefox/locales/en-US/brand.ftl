@@ -19,9 +19,9 @@
 -brand-shorter-name = Librefox
 -brand-short-name = Librefox
 -brand-shortcut-name = Librefox
--brand-full-name = Mozilla Librefox
+-brand-full-name = Librefox
 # This brand name can be used in messages where the product name needs to
 # remain unchanged across different versions (Nightly, Beta, etc.).
 -brand-product-name = Librefox
--vendor-short-name = Mozilla
-trademarkInfo = Librefox and the Librefox logos are trademarks of the Mozilla Foundation.
+-vendor-short-name = Librefox
+trademarkInfo = Librefox and the Librefox logos are trademarks of the Librefox.
