@@ -10,7 +10,9 @@ fetchsrc:
 	tar -xf $(ff_source_tarball)
 
 copyfiles:
-	rm -rf $(ff_patches_dir)/browser/branding/librefox $(ff_source_dir)/mozconfig $(ff_patches_dir)
+	rm -rf $(ff_patches_dir)/browser/branding/librefox || true
+	rm -rf $(ff_source_dir)/mozconfig  || true
+	rm -rf $(ff_patches_dir) || true
 	cp -r browser/branding/librefox $(ff_source_dir)/browser/branding
 	cp -r patches $(ff_source_dir)/
 	cp mozconfig $(ff_source_dir)/
