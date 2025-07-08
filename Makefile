@@ -38,7 +38,7 @@ prepare: fetchsrc copyfiles
 obj_out = $(ff_source_dir)/obj-x86_64-pc-linux-gnu/dist/librefox-*.tar.xz
 repack_dir = $(cwd)/repacking
 out_dir = $(cwd)/out
-settings_url = https://github.com/librefox05/librefox_settings
+settings_url = https://github.com/librefox05/settings
 
 repack:
 	rm -rf $(repack_dir)
