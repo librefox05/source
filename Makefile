@@ -1,12 +1,14 @@
 
-version = 140.0.2
+version = 140.0.4
 cwd = $(shell pwd)
 ff_source_dir = $(abspath firefox-$(version))
 ff_patches_dir = $(ff_source_dir)/patches
 ff_source_tarball = firefox-$(version).tar.xz
 
-fetchsrc:
+fetchsource:
 	wget -q --show-progress "https://archive.mozilla.org/pub/firefox/releases/$(version)/source/firefox-$(version).source.tar.xz" -O $(ff_source_tarball)
+
+untar:
 	tar -xf $(ff_source_tarball)
 
 copyfiles:
@@ -24,15 +26,11 @@ patch:
 clobber:
 	cd $(ff_source_dir) && ./mach clobber
 
-build: copyfiles
+build:
 	cd $(ff_source_dir) && \
 	./mach --no-interactive bootstrap --application-choice browser && \
 	./mach build && \
 	./mach package
-
-cbuild: clobber build
-
-prepare: fetchsrc copyfiles
 
 # repacking
 obj_out = $(ff_source_dir)/obj-x86_64-pc-linux-gnu/dist/librefox-*.tar.xz
@@ -53,3 +51,9 @@ repack:
 
 clean:
 	rm -rf $(ff_source_tarball) $(ff_source_dir) $(out_dir) $(repack_dir)
+
+prepare: fetchsource untar copyfiles
+
+buildclean: clean prepare patch build repack
+
+buildover: copyfiles build repack
