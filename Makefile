@@ -1,55 +1,70 @@
-
-version = 140.0.2
+#
+# mksource: get firefox source archive and configure it to be built as librefox
+# breakfast: clean up previously downloaded source, dirs and configure source and build
+# dinner: use the already available source, configure it, and build
+#
+version = 140.0.4
 cwd = $(shell pwd)
-ff_source_dir = $(abspath firefox-$(version))
-ff_patches_dir = $(ff_source_dir)/patches
-ff_source_tarball = firefox-$(version).tar.xz
+srcdir = $(abspath firefox-$(version))
+patchesdir = $(srcdir)/patches
+src_tarball = firefox-$(version).tar.xz
+obj_out = $(srcdir)/obj-x86_64-pc-linux-gnu/dist/librefox-*.tar.xz
+bundle_dir = $(cwd)/forge
+out_dir = $(cwd)/out
+settings_url = https://github.com/librefox05/settings
 
-fetchsrc:
-	wget -q --show-progress "https://archive.mozilla.org/pub/firefox/releases/$(version)/source/firefox-$(version).source.tar.xz" -O $(ff_source_tarball)
-	tar -xf $(ff_source_tarball)
+.PHONY: getsrc untar configure patch clobber build bundle clean mksource breakfast dinner sweep
 
-copyfiles:
-	rm -rf $(ff_patches_dir)/browser/branding/librefox || true
-	rm -rf $(ff_source_dir)/mozconfig  || true
-	rm -rf $(ff_patches_dir) || true
-	cp -r browser/branding/librefox $(ff_source_dir)/browser/branding
-	cp -r patches $(ff_source_dir)/
-	cp -r browser/base/content/aboutDialog.xhtml $(ff_source_dir)/browser/base/content/
-	cp mozconfig $(ff_source_dir)/
+getsrc:
+	wget -q --show-progress "https://archive.mozilla.org/pub/firefox/releases/$(version)/source/firefox-$(version).source.tar.xz" -O $(src_tarball)
+
+untar:
+	tar -xf $(src_tarball)
+
+configure:
+	rm -rf $(patchesdir)/browser/branding/librefox || true
+	rm -rf $(srcdir)/mozconfig  || true
+	rm -rf $(patchesdir) || true
+	cp -r browser/branding/librefox $(srcdir)/browser/branding
+	cp -r patches $(srcdir)/
+	cp -r browser/base/content/aboutDialog.xhtml $(srcdir)/browser/base/content/
+	cp mozconfig $(srcdir)/
 
 patch:
-	./apply_patches.sh $(ff_patches_dir) $(ff_source_dir)
+	./apply_patches.sh $(patchesdir) $(srcdir)
 
 clobber:
-	cd $(ff_source_dir) && ./mach clobber
+	cd $(srcdir) && ./mach clobber
 
-build: copyfiles
-	cd $(ff_source_dir) && \
+build:
+	cd $(srcdir) && \
 	./mach --no-interactive bootstrap --application-choice browser && \
 	./mach build && \
 	./mach package
 
-cbuild: clobber build
-
-prepare: fetchsrc copyfiles
-
-# repacking
-obj_out = $(ff_source_dir)/obj-x86_64-pc-linux-gnu/dist/librefox-*.tar.xz
-repack_dir = $(cwd)/repacking
-out_dir = $(cwd)/out
-settings_url = https://github.com/librefox05/settings
-
-repack:
-	rm -rf $(repack_dir)
-	mkdir $(repack_dir) $(out_dir)
-	tar -xf $(obj_out) -C $(repack_dir)
-	cd $(repack_dir) && \
+bundle:
+	rm -rf $(bundle_dir)
+	mkdir $(bundle_dir) $(out_dir)
+	tar -xf $(obj_out) -C $(bundle_dir)
+	cd $(bundle_dir) && \
 		git clone $(settings_url) custom_settings && \
-		cp -r custom_settings/* $(repack_dir)/librefox && \
+		cp -r custom_settings/* $(bundle_dir)/librefox && \
 		rm -rf custom_settings && \
 		cd $(out_dir) && \
-	  tar -cJf librefox-x86_64-$(version).tar.xz -C $(repack_dir) librefox
+	  tar -cJf librefox-x86_64-$(version).tar.xz -C $(bundle_dir) librefox
 
 clean:
-	rm -rf $(ff_source_tarball) $(ff_source_dir) $(out_dir) $(repack_dir)
+	rm -rf $(src_tarball) || true
+	rm -rf $(srcdir) || true
+	rm -rf $(out_dir) || true
+	rm -rf $(bundle_dir) || true
+
+sweep:
+	rm -rf $(out_dir) || true
+	rm -rf $(bundle_dir) || true
+
+mksource: getsrc untar configure
+
+breakfast: clean mksource patch build bundle
+
+dinner: sweep configure patch build bundle
