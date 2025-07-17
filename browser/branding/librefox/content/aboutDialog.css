@@ -1,55 +1,35 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-@namespace html "http://www.w3.org/1999/xhtml";
 
 #aboutDialog {
-  /* Set an explicit line-height to avoid discrepancies in 'auto' spacing
-     across screens with different device DPI, which may cause font metrics
-     to round differently. */
-  line-height: 1.5;
+  border-right: #e10282 3px solid;
+  border-left: #e10282 3px solid;
+  background-color: #212242;
 }
 
-* {
-background-color: #1a1b34;
+#aboutBox {
+display: flex;
+align-items: center;
+justify-content: center;
+ height: 100vh;
 }
 
-#aboutDialogContainer {
+#leftFlex {
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
   align-items: center;
-  border-left: 5px solid #494b92;
-  border-right: 5px solid #494b92;
-
-}
-
-#leftBox {
+  justify-content: center;
   background-image: image-set(url("chrome://branding/content/about-logo.png"), url("chrome://branding/content/about-logo@2x.png") 2x);
   background-repeat: no-repeat;
-  background-size: 192px auto;
-  background-position: center 40px;
-  /* min-width and min-height create room for the logo; logo is 192px tall w/
-     40px above it, this leaves 8px on the bottom at the minimum height */
-  min-width: 210px;
-  min-height: 240px;
-  margin-inline-start: 30px;
+  width: 200px;
+  height: 200px;
 }
 
-#rightBox {
-  background-repeat: no-repeat;
-  background-size: 288px auto;
-  /* padding-top creates room for the wordmark */
-  /* We don't want this box to contribute arbitrarily to the intrinsic size of
-   * the dialog, so set the width to a reasonable size, but let it flex to take
-   * all available space. */
-  width: 430px;
-  flex: 1 auto;
-
-  &:-moz-locale-dir(rtl) {
-    background-position: 100% 0;
-  }
+#rightFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 #wordmark {
@@ -57,30 +37,10 @@ background-color: #1a1b34;
   font-size: 250%;
 }
 
-#clientBox {
-  flex: 1 0 auto;
-  justify-content: center;
-  align-items: center;
-}
-
-#bottomBox {
-  padding: 15px 10px 0;
-  min-height: 52px;
-}
-
-#versionbox {
-display: flex;
-flex-direction: column;
-}
-
 #version {
-  margin-left: 5px;
+  margin-left: 7px;
   font-weight: bold;
   user-select: text;
   -moz-user-focus: normal;
   cursor: text;
-
-  &.update {
-    font-weight: normal;
-  }
 }

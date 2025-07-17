@@ -37,25 +37,17 @@
     <html:link rel="localization" href="browser/aboutDialog.ftl"/>
   </linkset>
 
-  <html:div id="aboutDialogContainer">
-    <hbox id="clientBox">
-      <vbox id="leftBox" flex="1"/>
-      <vbox id="rightBox">
-        <label id="wordmark">Librefox</label>
-         <div id="versionbox">
-         <label id="version" />
-         </div >
-        <label id="distribution" class="text-blurb"/>
-        <label id="distributionId" class="text-blurb"/>
-        <vbox id="detailsBox">
-          <description>
-            Librefox browser, made with privacy in mind with little breakage or none
-          </description>
-            <label is="text-link" href="https://github.com/librefox05" value="Visit our repos" />
-        </vbox>
-      </vbox>
-    </hbox>
-  </html:div>
+  <div id="aboutBox">
+  <div id="leftFlex"/>
+  <div id="rightFlex">
+  <label id="wordmark">Librefox</label>
+  <label id="version" />
+  <description>
+  Librefox browser, made with privacy and usability in mind.
+  </description>
+  <label is="text-link" href="https://github.com/librefox05" value="Visit our repos" />
+  </div>
+  </div>
 
   <keyset>
     <key id="aboutDialogEscapeKey" keycode="VK_ESCAPE"/>
