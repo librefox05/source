@@ -1,25 +1,86 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+@namespace html "http://www.w3.org/1999/xhtml";
+
+#aboutDialog {
+  /* Set an explicit line-height to avoid discrepancies in 'auto' spacing
+     across screens with different device DPI, which may cause font metrics
+     to round differently. */
+  line-height: 1.5;
+}
+
+* {
+background-color: #1a1b34;
+}
 
 #aboutDialogContainer {
-  background-color: #20123a;
-  color: #fff;
-  color-scheme: dark;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  border-left: 5px solid #494b92;
+  border-right: 5px solid #494b92;
+
+}
+
+#leftBox {
+  background-image: image-set(url("chrome://branding/content/about-logo.png"), url("chrome://branding/content/about-logo@2x.png") 2x);
+  background-repeat: no-repeat;
+  background-size: 192px auto;
+  background-position: center 40px;
+  /* min-width and min-height create room for the logo; logo is 192px tall w/
+     40px above it, this leaves 8px on the bottom at the minimum height */
+  min-width: 210px;
+  min-height: 240px;
+  margin-inline-start: 30px;
 }
 
 #rightBox {
-  margin-inline: 30px;
+  background-repeat: no-repeat;
+  background-size: 288px auto;
+  /* padding-top creates room for the wordmark */
+  /* We don't want this box to contribute arbitrarily to the intrinsic size of
+   * the dialog, so set the width to a reasonable size, but let it flex to take
+   * all available space. */
+  width: 430px;
+  flex: 1 auto;
+
+  &:-moz-locale-dir(rtl) {
+    background-position: 100% 0;
+  }
+}
+
+#wordmark {
+  font-weight: bold;
+  font-size: 250%;
+}
+
+#clientBox {
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: center;
 }
 
 #bottomBox {
-  background-color: hsla(235, 43%, 10%, .5);
-  padding: 15px 10px 15px;
+  padding: 15px 10px 0;
+  min-height: 52px;
 }
 
-#trademark {
-  font-size: xx-small;
-  text-align: center;
-  color: #999999;
-  margin-block: 10px;
+#versionbox {
+display: flex;
+flex-direction: column;
+}
+
+#version {
+  margin-left: 5px;
+  font-weight: bold;
+  user-select: text;
+  -moz-user-focus: normal;
+  cursor: text;
+
+  &.update {
+    font-weight: normal;
+  }
 }

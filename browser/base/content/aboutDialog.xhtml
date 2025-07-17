@@ -41,26 +41,17 @@
     <hbox id="clientBox">
       <vbox id="leftBox" flex="1"/>
       <vbox id="rightBox">
-        <label id="release" hidden="true">
-        <!-- This string is explicitly not translated -->
-          Extended Support Release
-        </label>
-#ifndef MOZ_UPDATER
-        <!-- This HBOX is duplicated below with class="update" -->
-        <hbox align="baseline">
-          <label id="version"/>
-          <label id="releasenotes" is="text-link" hidden="true" data-l10n-id="releaseNotes-link"/>
-        </hbox>
-#endif
-
+        <label id="wordmark">Librefox</label>
+         <div id="versionbox">
+         <label id="version" />
+         </div >
         <label id="distribution" class="text-blurb"/>
         <label id="distributionId" class="text-blurb"/>
-
         <vbox id="detailsBox">
           <description>
             Librefox browser, made with privacy in mind with little breakage or none
           </description>
-            <label is="text-link" href="https://github.com/librefox05" value="Our repos" />
+            <label is="text-link" href="https://github.com/librefox05" value="Visit our repos" />
         </vbox>
       </vbox>
     </hbox>
@@ -72,4 +63,3 @@
 
   <script src="chrome://browser/content/aboutDialog.js"/>
 </window>
-
