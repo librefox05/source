@@ -1,8 +1,14 @@
+commit de4d8201ff402ed433956a54f4afa7623a3e63e7
+Author: rvsmooth <riveeks.smooth@gmail.com>
+Date:   Mon Jul 21 19:56:14 2025 +0530
+
+    add
+
 diff --git a/browser/components/preferences/preferences.js b/browser/components/preferences/preferences.js
-index 0a2a789..0601d28 100644
+index b5af9af..c28033c 100644
 --- a/browser/components/preferences/preferences.js
 +++ b/browser/components/preferences/preferences.js
-@@ -234,8 +234,6 @@ function init_all() {
+@@ -242,8 +242,6 @@ function init_all() {
      this.removeAttribute("keyboard-navigation");
    });
  
