@@ -3,7 +3,7 @@
 # breakfast: clean up previously downloaded source, dirs and configure source and build
 # dinner: use the already available source, configure it, and build
 #
-version = 142.0.1
+version = 143.0.1
 cwd = $(shell pwd)
 srcdir = $(abspath firefox-$(version))
 patchesdir = $(srcdir)/patches
